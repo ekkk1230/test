@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/restaurants/{id}/reviews/new(id=${id})}" method="post">
+    <label>
+        맛집이름 <input type="text" name="restaurantName" th:text="${storeName}">
+    </label>
+    <label>
+        평점 <input type="text" name="restaurantRating">
+    </label>
+    <label>
+        <p>후기 본문</p>
+        <textarea name="restaurantComment"></textarea>
+    </label>
+    <button type="submit">제출</button>
+</form>
+
+<p th:text="${restaurantName}"></p>
+<p th:text="${restaurantRating}"></p>
+<p th:text="${restaurantComment}"></p>
+</body>
+</html>

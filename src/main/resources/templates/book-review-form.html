@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/book-review-form}" method="post">
+    <label>
+        책 제목 <input type="text" name="bookTitle">
+    </label>
+    <label>
+        <p>책 한줄 감상</p>
+        <textarea name="comment"></textarea>
+    </label>
+    <button type="submit">제출</button>
+</form>
+
+<p th:text="${bookTitle}"></p>
+<p th:text="${comment}"></p>
+</body>
+</html>

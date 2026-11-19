@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/menu-form}" method="post">
+    <label>메뉴 이름 <input type="text" name="menuName"></label>
+    <button type="submit">제출</button>
+</form>
+
+<p th:text="${submittedMenu}"></p>
+</body>
+</html>

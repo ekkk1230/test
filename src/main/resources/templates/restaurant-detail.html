@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${restaurant.getStoreName()}"></p>
+<p th:text="${restaurant.getRating()}"></p>
+<a th:href="@{/restaurants/{id}/reviews/new(id=${id})}">후기 쓰기</a>
+</body>
+</html>

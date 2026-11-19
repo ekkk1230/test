@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>목록</title>
+</head>
+<body>
+<h1>목록</h1>
+<ul>
+    <li th:each="item : ${entry}">
+        <a th:href="@{/restaurants/{id}(id=${item.key})}"
+           th:text="${item.value.getStoreName()}">맛집 이름</a>
+        <span th:text="${item.value.getRating()}">평점</span>
+    </li>
+</ul>
+</body>
+</html>
