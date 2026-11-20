@@ -7,7 +7,7 @@
 <body>
 <form th:action="@{/book-review-form}" method="post">
     <label>
-        책 제목 <input type="text" name="bookTitle">
+        책 제목 <input type="text" name="bookTitle" th:value="${draftBookTitle}">
     </label>
     <label>
         <p>책 한줄 감상</p>
@@ -16,6 +16,7 @@
     <button type="submit">제출</button>
 </form>
 
+<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 <p th:text="${bookTitle}"></p>
 <p th:text="${comment}"></p>
 </body>

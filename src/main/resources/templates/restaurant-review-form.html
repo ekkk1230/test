@@ -7,19 +7,20 @@
 <body>
 <form th:action="@{/restaurants/{id}/reviews/new(id=${id})}" method="post">
     <label>
-        맛집이름 <input type="text" name="restaurantName" th:text="${storeName}">
+        맛집이름 <input type="text" readonly th:value="${storeName}">
     </label>
     <label>
-        평점 <input type="text" name="restaurantRating">
+        평점 <input type="text" name="restaurantRating" th:value="${draftRating}">
     </label>
     <label>
         <p>후기 본문</p>
-        <textarea name="restaurantComment"></textarea>
+        <textarea name="restaurantComment" th:text="${draftComment}"></textarea>
     </label>
     <button type="submit">제출</button>
 </form>
 
-<p th:text="${restaurantName}"></p>
+<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+<p th:text="${storeName}"></p>
 <p th:text="${restaurantRating}"></p>
 <p th:text="${restaurantComment}"></p>
 </body>

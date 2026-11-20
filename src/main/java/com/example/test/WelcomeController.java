@@ -81,6 +81,12 @@ public class WelcomeController {
             @RequestParam("menuName") String menuName,
             Model model
     ) {
+        if (menuName.isBlank()) {
+            model.addAttribute("errorMessage", "메뉴 이름을 입력해주세요.");
+            model.addAttribute("draftName", menuName);
+            return "menu-form";
+        }
+
         model.addAttribute("submittedMenu", menuName);
         return "menu-form";
     }
@@ -96,10 +102,48 @@ public class WelcomeController {
             @RequestParam("comment") String comment,
             Model model
     ) {
+        model.addAttribute("draftBookTitle", bookTitle);
+
+        if (comment.isBlank()) {
+            model.addAttribute("errorMessage", "감상을 입력해주세요.");
+            return "book-review-form";
+        }
+
         model.addAttribute("bookTitle", bookTitle);
         model.addAttribute("comment", comment);
 
         return "book-review-form";
     }
 
+    @GetMapping("/price-form")
+    public String showPriceForm() {
+        return "price-form";
+    }
+
+    @PostMapping("/price-form")
+    public String submitPriceForm(
+        @RequestParam("price") String price,
+        Model model
+    ) {
+        if (price.isBlank()) {
+            model.addAttribute("errorMessage", "가격을 입력해주세요.");
+            return "price-form";
+        }
+
+        try {
+            Double doublePrice = Double.parseDouble(price);
+            String priceMessage = "변환한 가격: " + doublePrice;
+
+            if (!Double.isFinite(doublePrice) || doublePrice < 0) {
+                model.addAttribute("errorMessage", "가격은 0 이상의 유한한 숫자로 입력해주세요.");
+                return "price-form";
+            }
+            model.addAttribute("price", priceMessage);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "가격을 숫자로 입력해주세요.");
+            System.out.println("숫자를 입력해주세요.");
+        }
+
+        return "price-form";
+    }
 }

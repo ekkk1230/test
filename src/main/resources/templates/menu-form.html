@@ -6,10 +6,11 @@
 </head>
 <body>
 <form th:action="@{/menu-form}" method="post">
-    <label>메뉴 이름 <input type="text" name="menuName"></label>
+    <label>메뉴 이름 <input type="text" name="menuName" th:value="${draftName}"></label>
     <button type="submit">제출</button>
 </form>
 
+<p th:if="${errorMessage}" th:text="${errorMessage}"></p>
 <p th:text="${submittedMenu}"></p>
 </body>
 </html>
